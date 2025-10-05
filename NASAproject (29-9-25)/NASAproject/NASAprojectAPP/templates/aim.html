@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aim - NASA Webby Awards</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .logo1 { height: 50px; }
+    .hero-img { width: 100%; height: 400px; object-fit: cover; }
+    .content-section { padding: 50px 20px; text-align: center; }
+    footer { background: #222; color: #fff; padding: 20px; text-align: center; }
+    footer a { color: #fff; margin: 0 10px; font-size: 20px; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="{% url 'home' %}">
+      <img class="logo1" src="{% static 'NASASPACE.png' %}" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">About Us</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="{% url 'aim' %}">Aim</a>
+      <a class="dropdown-item" href="{% url 'meet' %}">Meet the Team</a>
+      <a class="dropdown-item" href="{% url 'contactus' %}">Contact us</a>
+    </div>
+  </li>
+
+  {% if user.is_authenticated %}
+ 
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Resources</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="{% url 'aboutmoon' %}">About Moon</a>
+      <a class="dropdown-item" href="{% url 'factsaboutsolarsystem' %}">Facts About Mars</a>
+    </div>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+      {{ user.username }}
+    </a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+    </div>
+  </li>
+  {% else %}
+  
+  <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Sign Up →</a></li>
+  {% endif %}
+      </ul>
+    </div>
+</nav>
+
+<section>
+  <img src="{% static 'Banner.png' %}" class="hero-img" alt="Hero Image">
+</section>
+
+<section class="content-section">
+  <h2>Our Aim</h2>
+  <p>We’re a creative, audience-focused team blending storytelling, design, and strategy. From naming science projects to building engaging presentations and refining messages for educators, we work with empathy, clarity, and flair. Our visuals are bold, our communication is thoughtful, and our ideas are built to inspire. Collaboration is our strength—we support each other, challenge each other, and always aim for impact. Whether it’s a classroom, a stage, or a screen, we bring energy, trust, and imagination to everything we do.</p>
+</section>
+
+<footer>
+  <p>Follow us on:</p>
+  <a href="#"><i class="fab fa-facebook"></i></a>
+  <a href="#"><i class="fab fa-twitter"></i></a>
+  <a href="#"><i class="fab fa-instagram"></i></a>
+  <p>&copy; 2025 NASA Webby Awards. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
